@@ -1,0 +1,25 @@
+<div class="topInfo">
+  <h1>My phone book</h1>
+</div>
+<hr />
+<div class="moreTask">
+  <input type="text" [(ngModel)]="field" />
+  <button (click)="displayChange()">Add</button>
+</div>
+<hr />
+<app-child
+  [tasks]="tasksList"
+  [field]="field"
+  [display]="display"
+  (disp)="getdisp($event)"
+></app-child>
+<div class="chengeTaskDiv chengeTaskDivMore" *ngIf="display">
+  <div class="inpBox">
+    <h2>{{ btnAddChange }} Contact</h2>
+    <input type="text" [(ngModel)]="newName" />
+    <input type="text" [(ngModel)]="newLName" />
+    <input type="text" [(ngModel)]="newNumber" />
+    <hr />
+    <button (click)="changeContact()">{{ btnAddChange }}</button>
+  </div>
+</div>

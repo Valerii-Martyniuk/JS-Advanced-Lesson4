@@ -1,0 +1,39 @@
+<table>
+  <thead>
+    <tr>
+      <td (click)="sortByName('Fname')">
+        <span>First name</span>
+        <span *ngIf="sortDirection === 'Fname'">▲</span>
+        <span *ngIf="sortDirection === 'FnameEnd'">▼</span>
+      </td>
+      <td (click)="sortByName('Lname')">
+        <span> Last name</span>
+        <span *ngIf="sortDirection === 'Lname'">▲</span>
+        <span *ngIf="sortDirection === 'LnameEnd'">▼</span>
+      </td>
+      <td (click)="sortByName('number')">
+        <span>Number </span>
+        <span *ngIf="sortDirection === 'number'">▲</span>
+        <span *ngIf="sortDirection === 'numberEnd'">▼</span>
+      </td>
+      <td>Edit</td>
+      <td>Delete</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="
+        let task of tasks | sort : sortDirection | search : field;
+        index as i
+      "
+    >
+      <td>{{ task.Fname }}</td>
+      <td>{{ task.Lname }}</td>
+      <td>{{ task.number }}</td>
+      <td><button (click)="displayChange(i)">Edit</button></td>
+      <td>
+        <button (click)="deletNumb(i)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
